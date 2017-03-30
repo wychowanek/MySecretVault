@@ -7,4 +7,6 @@ public interface CreateVaultView {
 
     void showToast(int messageId);
 
+    void goToMainScreen();
+
 }

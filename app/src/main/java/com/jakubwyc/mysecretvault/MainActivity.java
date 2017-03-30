@@ -10,10 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import com.jakubwyc.mysecretvault.presenter.MainPresenter;
 import com.jakubwyc.mysecretvault.view.MainView;
 
-public class MainActivity extends AppCompatActivity implements MainView, OpenVaultFragment.OpenVaultFragmentListener {
+public class MainActivity extends AppCompatActivity implements MainView, OpenVaultFragment.OpenVaultFragmentListener, CreateVaultFragment.CreateVaultFragmentListener {
 
     public enum VaultScreen {
-        OPEN, CREATE
+        OPEN, CREATE, VAULT
     }
 
     private MainPresenter presenter;
@@ -65,9 +65,13 @@ public class MainActivity extends AppCompatActivity implements MainView, OpenVau
         switch (vaultScreen) {
             case CREATE:
                 showCreateVaultScreen();
-                return;
+                break;
             case OPEN:
+                showOpenVaultScreen();
+                break;
+            case VAULT:
                 showVaultScreen();
+                break;
         }
     }
 }

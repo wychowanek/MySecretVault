@@ -1,7 +1,15 @@
 package com.jakubwyc.mysecretvault.view;
 
-/**
- * Created by Jakub Wychowaniec, Oberthur Technologies R&D on 8/23/16.
- */
+import com.jakubwyc.mysecretvault.model.Treasure;
+
+import java.util.List;
+
 public interface VaultView {
+
+    void goToEditTreasureScreen(Treasure treasure);
+
+    void showSnackbar(int messageId);
+
+    void renderTreasures(List<Treasure> treasures);
+
 }

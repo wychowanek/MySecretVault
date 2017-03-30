@@ -79,7 +79,7 @@ public class OpenVaultFragment extends Fragment implements OpenVaultView {
     @Override
     public void showVaultScreen() {
         if (listener != null) {
-            listener.onFragmentChange(MainActivity.VaultScreen.OPEN);
+            listener.onFragmentChange(MainActivity.VaultScreen.VAULT);
         }
     }
 

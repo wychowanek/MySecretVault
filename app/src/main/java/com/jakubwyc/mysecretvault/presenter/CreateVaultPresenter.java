@@ -68,7 +68,11 @@ public class CreateVaultPresenter implements Presenter<CreateVaultView> {
 
     private void saveUser(User user) {
         subscriptions.add(Repository.getInstance().saveUser(user)
-                .subscribe($ -> view.showToast(R.string.user_saved))
+                .subscribe($ ->
+                {
+                    view.showToast(R.string.user_saved);
+                    view.goToMainScreen();
+                })
         );
     }
 }

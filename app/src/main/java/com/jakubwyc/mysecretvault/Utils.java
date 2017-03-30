@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 
 public class Utils {
 
-    public static final Charset UTF_8 = Charset.forName("UTF-8");
+    private static final Charset UTF_8 = Charset.forName("UTF-8");
 
     public static byte[] sha256(String data) {
         HashFunction hf = Hashing.sha256();

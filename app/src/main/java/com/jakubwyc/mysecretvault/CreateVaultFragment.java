@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
 import com.jakubwyc.mysecretvault.presenter.CreateVaultPresenter;
+import com.jakubwyc.mysecretvault.presenter.OpenVaultPresenter;
 import com.jakubwyc.mysecretvault.view.CreateVaultView;
 
 import butterknife.BindView;
@@ -23,6 +24,7 @@ public class CreateVaultFragment extends Fragment implements CreateVaultView {
 
     private Unbinder unbinder;
     private CreateVaultPresenter presenter;
+    private CreateVaultFragmentListener listener;
 
     @BindView(R.id.create_login_edit)
     EditText loginView;
@@ -51,6 +53,12 @@ public class CreateVaultFragment extends Fragment implements CreateVaultView {
         super.onAttach(context);
         presenter = new CreateVaultPresenter();
         presenter.attachView(this);
+        if (context instanceof CreateVaultFragmentListener) {
+            listener = (CreateVaultFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement CreateVaultFragmentListener");
+        }
     }
 
     @Override
@@ -73,5 +81,14 @@ public class CreateVaultFragment extends Fragment implements CreateVaultView {
     @Override
     public void showToast(int messageId) {
         Toast.makeText(getActivity(), messageId, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void goToMainScreen() {
+        listener.onFragmentChange(MainActivity.VaultScreen.OPEN);
+    }
+
+    public interface CreateVaultFragmentListener {
+        void onFragmentChange(MainActivity.VaultScreen screen);
     }
 }

@@ -4,12 +4,11 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
-public class RealmUser extends RealmObject {
-
-    @PrimaryKey
-    public String login;
+public class RealmTreasure extends RealmObject {
 
     @Required
-    public byte[] passwordHash;
+    public String text;
+    @PrimaryKey
+    public long date;
 
 }
