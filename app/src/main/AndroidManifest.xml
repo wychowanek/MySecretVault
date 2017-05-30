@@ -3,14 +3,14 @@
     package="com.jakubwyc.mysecretvault">
 
     <application
-        android:name=".VaultApplication"
+        android:name=".VaultSystemContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VaultActivity"
+            android:name=".vault.VaultActivity"
             android:label="@string/title_activity_vault"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditTreasureActivity"
+            android:name=".treasure.EditTreasureActivity"
             android:label="@string/title_activity_new_item"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

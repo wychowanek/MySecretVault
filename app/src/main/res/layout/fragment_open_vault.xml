@@ -16,14 +16,14 @@
         android:padding="20dp">
 
         <EditText
-            android:id="@+id/login_edit"
+            android:id="@+id/loginEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="@string/username" />
 
         <EditText
-            android:id="@+id/password_edit"
+            android:id="@+id/passwordEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/open_vault_button"
+        android:id="@+id/openVaultButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_pass"
@@ -43,10 +43,10 @@
         android:text="@string/open_vault" />
 
     <Button
-        android:id="@+id/create_vault_button"
+        android:id="@+id/createVaultButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/open_vault_button"
+        android:layout_below="@+id/openVaultButton"
         android:layout_centerHorizontal="true"
         android:text="@string/create_vault" />
 

@@ -5,24 +5,24 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/create_login_edit"
+        android:id="@+id/loginEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/create_password_edit"
+        android:id="@+id/passwordEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/create_password_repeat_edit"
+        android:id="@+id/passwordRepeatEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/create_create_vault_button"
+        android:id="@+id/createVaultButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Vault" />
