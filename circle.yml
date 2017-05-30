@@ -1,12 +1,38 @@
 dependencies:
-  pre:
-    # Android SDK Platform 24
-    - if [ ! -d "/usr/local/android-sdk-linux/platforms/android-25" ]; then echo y | android update sdk --no-ui --all --filter "android-25"; fi
-    # Android SDK Build-tools, revision 24.0.1
-    - if [ ! -d "/usr/local/android-sdk-linux/build-tools/25.0.2" ]; then echo y | android update sdk --no-ui --all --filter "build-tools-25.0.2"; fi
+    pre:
+      # Android SDK Platform 24
+      - if [ ! -d "/usr/local/android-sdk-linux/platforms/android-25" ]; then echo y | android update sdk --no-ui --all --filter "android-25"; fi
+      # Android SDK Build-tools, revision 25.0.1
+      - if [ ! -d "/usr/local/android-sdk-linux/build-tools/25.0.2" ]; then echo y | android update sdk --no-ui --all --filter "build-tools-25.0.2"; fi
+      # Android Support Repository, revision 40 / Local Maven repository for Support Libraries
+      - if [ ! -d "/usr/local/android-sdk-linux/extras/android/m2repository/com/android/support/support-v4/25.0.2" ]; then echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"; fi
+      # Google Support Repository, revision 40 / Local Maven repository for Support Libraries
+      - if [ ! -d "/usr/local/android-sdk-linux/extras/google/m2repository/com/google/firebase/firebase-core/10.0.1" ]; then echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"; fi
+
+      - echo y | android update sdk --no-ui --all --filter "tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
+      - echo y | $ANDROID_HOME/tools/bin/sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
 
 
-  cache_directories:
-    - /usr/local/android-sdk-linux/platforms/android-24
-    - /usr/local/android-sdk-linux/build-tools/24.0.1
-    - /usr/local/android-sdk-linux/extras/android/m2repository
+      - mkdir $ANDROID_HOME/licenses; ls -l $ANDROID_HOME/licenses
+      - cp --force licenses/* $ANDROID_HOME/licenses; ls -l $ANDROID_HOME/licenses
+
+
+    cache_directories:
+      - /usr/local/android-sdk-linux/platforms/android-24
+      - /usr/local/android-sdk-linux/build-tools/25.0.1
+      - /usr/local/android-sdk-linux/extras/android/m2repository
+      - /usr/local/android-sdk-linux/extras/google/m2repository
+
+    override:
+    # Adding true flag because of this issue with ConstraintLayout https://code.google.com/p/android/issues/detail?id=212128
+      - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies || true
+
+test:
+  override:
+    - ./gradlew app:testDebug assembleDebug -PdisablePreDex
+    - cp -r app/build/outputs/apk/app-debug.apk $CIRCLE_ARTIFACTS
+#    - ./gradlew clean app:testRelease assembleRelease
+#    - cp -r app/build/outputs/apk/app-release.apk $CIRCLE_ARTIFACTS
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/test-results/debug/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
