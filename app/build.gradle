@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'kotlin-android'
+apply plugin: 'realm-android'
 apply plugin: 'kotlin-android-extensions'
 
 buildscript {
@@ -62,6 +62,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:2.8.9"
+    testCompile "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
 }
 
 repositories {
