@@ -24,9 +24,7 @@ class TreasureAdapter(private val treasures: MutableList<Treasure>, private val 
         holder.date.text = dateString
     }
 
-    override fun getItemCount(): Int {
-        return treasures.size
-    }
+    override fun getItemCount(): Int = treasures.size
 
     fun addTreasure(treasureSwiped: Treasure, adapterPosition: Int) {
         treasures.add(adapterPosition, treasureSwiped)
@@ -46,9 +44,7 @@ class TreasureAdapter(private val treasures: MutableList<Treasure>, private val 
         }
     }
 
-    fun getTreasureAt(i: Int): Treasure {
-        return treasures[i]
-    }
+    fun getTreasureAt(i: Int): Treasure = treasures[i]
 
     fun removeTreasure(treasure: Treasure, adapterPosition: Int) {
         treasures.remove(treasure)

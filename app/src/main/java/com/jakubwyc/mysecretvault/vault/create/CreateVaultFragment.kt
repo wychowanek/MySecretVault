@@ -23,10 +23,11 @@ class CreateVaultFragment : Fragment(), CreateVaultView {
         val view = inflater!!.inflate(R.layout.fragment_create_vault, container, false)
         return view
     }
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        RxTextView.textChanges(loginEdit).subscribe({ presenter.onLoginChanged(it) })
-        RxTextView.textChanges(passwordEdit).subscribe({ presenter.onPasswordChanged(it) })
-        RxTextView.textChanges(passwordRepeatEdit).subscribe({ presenter.onPasswordRepeatChanged(it) })
+        RxTextView.textChanges(loginEdit).subscribe { presenter.onLoginChanged(it) }
+        RxTextView.textChanges(passwordEdit).subscribe { presenter.onPasswordChanged(it) }
+        RxTextView.textChanges(passwordRepeatEdit).subscribe { presenter.onPasswordRepeatChanged(it) }
         RxView.clicks(createVaultButton).subscribe { presenter.createVault() }
     }
 

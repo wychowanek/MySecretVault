@@ -4,11 +4,12 @@ buildscript {
     ext.kotlin_version = '1.1.2-4'
     repositories {
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.android.tools.build:gradle:2.3.2'
-
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.0.0.RC4-3"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -22,4 +23,14 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+detekt {
+    version = "1.0.0.RC4-3"
+    profile("main") {
+        input = "$projectDir/app/src/main/java"
+        output = "$projectDir/reports/report.xml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    }
 }

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryBackground"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -17,6 +18,7 @@
 
         <EditText
             android:id="@+id/loginEdit"
+            style="@style/EditText.Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -24,6 +26,7 @@
 
         <EditText
             android:id="@+id/passwordEdit"
+            style="@style/EditText.Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -24,4 +24,5 @@
     <string name="save">Save</string>
     <string name="type_your_treasure_text_here">Type your treasure text here...</string>
     <string name="extra_treasure">treasure</string>
+    <string name="repeat_password">repeat password</string>
 </resources>

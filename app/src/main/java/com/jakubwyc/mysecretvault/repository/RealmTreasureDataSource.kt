@@ -9,8 +9,8 @@ import com.vicpin.krealmextensions.delete
 import com.vicpin.krealmextensions.save
 import rx.Observable
 
-class RealmTreasureDataSource(val treasureMapper: Mapper<Treasure, RealmTreasure> = TreasureMapper(),
-                              val realmTreasureMapper: Mapper<RealmTreasure, Treasure> = RealmTreasureMapper()) : TreasureDataSource {
+class RealmTreasureDataSource(private val treasureMapper: Mapper<Treasure, RealmTreasure> = TreasureMapper(),
+                              private val realmTreasureMapper: Mapper<RealmTreasure, Treasure> = RealmTreasureMapper()) : TreasureDataSource {
 
     override fun save(treasure: Treasure): Observable<Boolean> {
         return Observable.create<Boolean> { subscriber ->

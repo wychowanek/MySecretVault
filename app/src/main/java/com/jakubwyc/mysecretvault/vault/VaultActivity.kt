@@ -40,9 +40,7 @@ class VaultActivity : AppCompatActivity(), VaultView, TreasureOnClickListener {
     private fun setupRecyclerView() {
         recyclerView.isNestedScrollingEnabled = false
         val layoutManager = object : LinearLayoutManager(this) {
-            override fun supportsPredictiveItemAnimations(): Boolean {
-                return true
-            }
+            override fun supportsPredictiveItemAnimations() = true
         }
         recyclerView.layoutManager = layoutManager
         val itemTouchHelper = ItemTouchHelper(itemSwipeCallback)
